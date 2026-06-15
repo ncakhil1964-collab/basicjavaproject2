@@ -26,9 +26,7 @@
 		<tag/>
 		<url/>
 	</scm>
-	<properties>
-			</properties>
-	<dependencies>
+		<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc</artifactId>
