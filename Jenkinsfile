@@ -14,8 +14,9 @@ node(){
                 sh './mvnw clean install'
             }
         
-	
+	}
 		stage('Code Deployment'){
 		deploy adapters: [tomcat10(credentialsId: 'TomcatCreds', path: '', url: 'http://3.93.185.237:80/')], contextPath: 'Planview', onFailure: false, war: 'target/*.war'
 	}
+}
 }
