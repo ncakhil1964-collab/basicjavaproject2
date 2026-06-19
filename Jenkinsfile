@@ -16,5 +16,6 @@ node(){
 	
 		stage('Code Deployment'){
 		java -jar target/java-example.jar
+}
 	}
 }
