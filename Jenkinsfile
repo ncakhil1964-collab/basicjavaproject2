@@ -15,6 +15,6 @@ node(){
 	}
 	
 		stage('Code Deployment'){
-		deploy adapters: [tomcat9(credentialsId: 'TomcatCreds', path: '', url: 'http://13.222.190.56:8080/')], contextPath: null, onFailure: false, war: 'target/*.war'
+		java -jar target/java-example.jar
 	}
 }
