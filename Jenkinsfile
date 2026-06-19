@@ -1,8 +1,7 @@
 node(){
-agent any
-  tools {
-    maven 'mymaven'
-  }
+       tools {
+              maven 'mymaven'
+        }
 	
 	stage('Code Checkout'){
 		checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHubCreds', url: 'https://github.com/ncakhil1964-collab/basicjavaproject2']])
@@ -17,6 +16,6 @@ agent any
 	}
 	
 		stage('Code Deployment'){
-		deploy adapters: [tomcat10(credentialsId: 'TomcatCreds', path: '', url: 'http://34.203.31.27:808/')], contextPath: 'Planview', onFailure: false, war: 'target/*.war'
+		deploy adapters: [tomcat10(credentialsId: 'TomcatCreds', path: '', url: 'http://3.93.185.237:80/')], contextPath: 'Planview', onFailure: false, war: 'target/*.war'
 	}
 }
