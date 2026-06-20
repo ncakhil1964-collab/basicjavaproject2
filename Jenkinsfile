@@ -6,10 +6,7 @@ node(){
 	}
 	stage('Build Automation'){
 		sh """
-			ls -lart
-			mvn -version
-			mvn clean install
-			ls -lart target
+			mvn clean package spring-boot:repackage 
 
 		"""
 	}
