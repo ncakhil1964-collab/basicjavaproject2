@@ -15,6 +15,12 @@ node(){
 	}
 	
 		stage('Code Deployment'){
-		deploy adapters: [tomcat9(credentialsId: 'TomcatCreds', path: '', url: 'http://13.222.190.56:8080/')], contextPath: null, onFailure: false, war: 'target/*.war'
-	}
+		sh 'pkill -f "java -jar" || true'
+                sh 'nohup java -jar target/*.jar > app.log 2>&1 &'
 }
+}
+
+
+
+sh 'pkill -f "java -jar" || true'
+        sh 'nohup java -jar target/*.jar > app.log 2>&1 &'
