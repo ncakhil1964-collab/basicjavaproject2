@@ -6,13 +6,18 @@ node(){
 	}
 	stage('Build Automation'){
 		sh """
-			mvn clean package spring-boot:repackage 
+			ls -lart
+			mvn -version
+			mvn clean install
+			ls -lart target
 
 		"""
 	}
 	
 	 stage('Deploy') {
-        
-deploy contextPath: null, war: 'java -jar myapp.jar'
+        sh 'pkill -f "java -jar" || true'
+        sh 'nohup java -jar target/*.jar > app.log 2>&1 &'
+
+
     }
 }
