@@ -20,7 +20,3 @@ node(){
 }
 }
 
-
-
-sh 'pkill -f "java -jar" || true'
-        sh 'nohup java -jar target/*.jar > app.log 2>&1 &'
