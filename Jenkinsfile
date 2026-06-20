@@ -2,7 +2,7 @@ node(){
 
 	
 	stage('Code Checkout'){
-		checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHubCreds', url: 'https://github.com/anujdevopslearn/MavenBuild']])
+		checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHubCreds', url: 'https://github.com/ncakhil1964-collab/basicjavaproject2']])
 	}
 	stage('Build Automation'){
 		sh """
@@ -14,10 +14,7 @@ node(){
 		"""
 	}
 	
-	 stage('Deploy') {
-        sh 'pkill -f "java -jar" || true'
-        sh 'nohup java -jar target/*.jar > app.log 2>&1 &'
-
-
-    }
+		stage('Code Deployment'){
+		deploy adapters: [tomcat9(credentialsId: 'TomcatCreds', path: '', url: 'http://13.222.190.56:8080/')], contextPath: null, onFailure: false, war: 'target/*.war'
+	}
 }
